@@ -1,7 +1,7 @@
 # 
 
 ## Model
-www.msaez.io/#/courses/cna-full/8fd61270-c481-11ed-ad36-1bfd28bd1d42/compensation-correlation-2022
+www.msaez.io/#/courses/cna-full/8fd61270-c481-11ed-ad36-1bfd28bd1d42/dp-graphql-2022
 
 ## Before Running Services
 ### Make sure there is a Kafka server running
@@ -42,7 +42,7 @@ mvn spring-boot:run
 ```
 - delivery
 ```
- http :8088/deliveries id="id" address="address" customerId="customerId" quantity="quantity" orderId="orderId" status="status" 
+ http :8088/deliveries id="id" address="address" customerId="customerId" quantity="quantity" orderId="orderId" 
 ```
 
 

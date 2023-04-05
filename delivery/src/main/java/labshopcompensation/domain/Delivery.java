@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import labshopcompensation.DeliveryApplication;
-import labshopcompensation.domain.DeliveryCanceled;
 import labshopcompensation.domain.DeliveryStarted;
 import lombok.Data;
 
@@ -25,15 +24,10 @@ public class Delivery {
 
     private Long orderId;
 
-    private String status;
-
     @PostPersist
     public void onPostPersist() {
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);
         deliveryStarted.publishAfterCommit();
-
-        DeliveryCanceled deliveryCanceled = new DeliveryCanceled(this);
-        deliveryCanceled.publishAfterCommit();
     }
 
     public static DeliveryRepository repository() {
@@ -48,8 +42,6 @@ public class Delivery {
         Delivery delivery = new Delivery();
         repository().save(delivery);
 
-        DeliveryStarted deliveryStarted = new DeliveryStarted(delivery);
-        deliveryStarted.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -59,32 +51,6 @@ public class Delivery {
             delivery // do something
             repository().save(delivery);
 
-            DeliveryStarted deliveryStarted = new DeliveryStarted(delivery);
-            deliveryStarted.publishAfterCommit();
-
-         });
-        */
-
-    }
-
-    public static void returnDelivery(OrderCancelled orderCancelled) {
-        /** Example 1:  new item 
-        Delivery delivery = new Delivery();
-        repository().save(delivery);
-
-        DeliveryCanceled deliveryCanceled = new DeliveryCanceled(delivery);
-        deliveryCanceled.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderCancelled.get???()).ifPresent(delivery->{
-            
-            delivery // do something
-            repository().save(delivery);
-
-            DeliveryCanceled deliveryCanceled = new DeliveryCanceled(delivery);
-            deliveryCanceled.publishAfterCommit();
 
          });
         */
